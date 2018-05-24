@@ -1,0 +1,1 @@
+import Maze from 'maze'
