@@ -1,10 +1,9 @@
 {% if model == "granite" %}
-require "granite_orm/adapter/{{ database }}"
+require "granite/adapter/{{ database }}"
 
-Granite::ORM.settings.database_url = Maze.settings.database_url
-Granite::ORM.settings.logger = Maze.settings.logger.dup
-Granite::ORM.settings.logger.progname = "Granite"
-
+Granite.settings.database_url = Maze.settings.database_url
+Granite.settings.logger = Maze.settings.logger.dup
+Granite.settings.logger.progname = "Granite"
 {% else %}
 {% if database == "sqlite" %}
 require "sqlite3"

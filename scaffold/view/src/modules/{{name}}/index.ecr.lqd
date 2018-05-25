@@ -24,9 +24,9 @@
 {% endfor %}
         <td>
           <span>
-            <%= link_to("read", "/{{ name | pluralize }}/#{ {{ name }}.id }", class: "btn btn-success btn-xs") -%>
-            <%= link_to("edit", "/{{ name | pluralize }}/#{ {{ name }}.id }/edit", class: "btn btn-success btn-xs") -%>
-            <%= link_to("delete", "/{{ name | pluralize }}/#{ {{ name }}.id }?_csrf=#{csrf_token}", "data-method": "delete", "data-confirm": "Are you sure?", class: "btn btn-danger btn-xs") -%>
+            <%= link_to("read", "/{{ name | pluralize }}/#{ {{ name }}.id }", class: "btn btn-primary btn-sm") -%>
+            <%= link_to("edit", "/{{ name | pluralize }}/#{ {{ name }}.id }/edit", class: "btn btn-success btn-sm") -%>
+            <%= link_to("delete", "/{{ name | pluralize }}/#{ {{ name }}.id }?_csrf=#{csrf_token}", "data-method": "delete", "data-confirm": "Are you sure?", class: "btn btn-danger btn-sm") -%>
           </span>
         </td>
       </tr>

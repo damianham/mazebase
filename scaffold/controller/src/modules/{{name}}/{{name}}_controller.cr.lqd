@@ -41,7 +41,7 @@ class {{ class_name }}Controller < ApplicationController
       render_module("new.{{ language }}")
 {% else %}
     {{ name }} = {{ class_name }}.new
-    {{ name }}.update_from_hash(params.to_h.select({{ name }}_params.validate!))
+    {{ name }}.update_from_hash(params.to_h.select({{ name }}_params.validate!.keys).compact)
     changeset = Repo.insert({{ name }})
     if changeset.errors.any?
       flash["danger"] = "Could not create {{ class_name }}!"
@@ -81,7 +81,7 @@ class {{ class_name }}Controller < ApplicationController
 {% else %}
     if {{ name }} = Repo.get({{ class_name }}, params["id"])
       changeset = Repo.update({{ name }})
-      {{ name }}.update_from_hash(params.to_h.select({{ name }}_params.validate!))
+      {{ name }}.update_from_hash(params.to_h.select({{ name }}_params.validate!.keys).compact)
       changeset = Repo.update({{ name }})
 
       if changeset.errors.any?

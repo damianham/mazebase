@@ -19,9 +19,10 @@
 {% if field.type == "text" %}
     <%= text_area(name: "{{ field.name }}", content: {{ name }}.{{ field.name }}, placeholder: "{{ field.name | capitalize }}", class: "form-control", size: "30x10") -%>
 {% elsif field.type == "boolean" %}
-    <div class="checkbox">
-      <%= label(:{{ field.name }}) { check_box(:{{ field.name }}, checked: {{ name }}.{{ field.name }}.to_s == "1" ) } -%>
-    </div>
+    <%= label(:{{field.name}}, class: "form-check-label") do
+    check_box(:{{field.name}}, checked: {{ name }}.{{ field.name }}.to_s == "1",
+              class: "form-check-input")
+    end -%>
 {% elsif field.type == "reference" %}
     <%= label(:{{ field.name }}) -%>
     <%= select_field(name: "{{ field.name }}_id", collection: {{ field.name | capitalize }}.all.map{|{{ field.name }}| [{{ field.name }}.id, {{ field.name }}.id]}, selected: {{ name }}.{{ field.name }}_id, class: "form-control") -%>
@@ -30,6 +31,6 @@
 {% endif %}
   </div>
 {% endfor %}
-  <%= submit("Submit", class: "btn btn-primary btn-xs") -%>
-  <%= link_to("back", "/{{ name | pluralize }}", class: "btn btn-default btn-xs") -%>
+  <%= submit("Submit", class: "btn btn-primary btn-sm") -%>
+  <%= link_to("back", "/{{ name | pluralize }}", class: "btn btn-light btn-sm") -%>
 </form>
